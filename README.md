@@ -1,0 +1,1 @@
+This is the public repository for our W210 Capstone as part of the Berkeley MIDS Program. It only contains the web deliverable for our project; our code is saved in a private repository due to privacy constraints on the datasets that we used.
