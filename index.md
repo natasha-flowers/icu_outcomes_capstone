@@ -29,7 +29,7 @@
 Table 1: Results from training and predicting outcomes using the MIMIC-IV dataset on two different outcomes: (1) ICU readmission or in-hospital death within 60 days of ICU discharge, and (2) ICU readmission or in-hospital death within 48 hours of ICU discharge among patients remaining in the hospital (i.e. discharged from the ICU to the floor or other stepdown unit). 
 
 | Model               |  Outcome 1: 60 Days (AUC) | Outcome 2: 48 Hours (AUC)|
-| :---------------    | :---------------          | :---------------     |
+| :---------------    | :---------------          | :---------------         |
 | Logistic Regression | 67.8                      | 84.0 |
 | Decision Tree       | 66.0                      | 83.9 |
 | XGBoost             | 73.1                      | 91.8 |
@@ -72,7 +72,7 @@ Note: the slide deck is only accessible to those logged in to Google with a UC B
 2. Pollard, T., Johnson, A., Raffa, J., Celi, L. A., Badawi, O., & Mark, R. (2019). eICU Collaborative Research Database (version 2.0). PhysioNet. <https://doi.org/10.13026/C2WM1R>.
 
 ## About Us
-This website is the final deliverable for our capstone project as part of the course W210: Synthetic Capstone in the UC Berkeley Master of Information and Data Science (MIDS) program. We took the course in the spring term of 2022 with Puya Vahabi and Alberto Todeschini. More information about us is below.
+This website is the final deliverable for our capstone project as part of the course W210: Synthetic Capstone in the UC Berkeley Master of Information and Data Science (MIDS) program. We took the course in the spring of 2022 with Puya Vahabi and Alberto Todeschini. More information about us is below.
 
 Dahler Battle 
 [[Linked-in]](https://www.linkedin.com/in/dahlerbattle/)
