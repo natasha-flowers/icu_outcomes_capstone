@@ -31,11 +31,27 @@
 ## Results
 Table 1: Results from training and predicting outcomes using the MIMIC-IV dataset on two different outcomes: (1) ICU readmission or in-hospital death within 60 days of ICU discharge, and (2) ICU readmission or in-hospital death within 48 hours of ICU discharge among patients remaining in the hospital (i.e. discharged from the ICU to the floor or other stepdown unit). 
 
-| Model           |  Outcome 1: 60 Days (AUC) | Outcome 2: 48 Hours (AUC)|
-| :--------------- | :---------------     | :---------------     |
-| Logistic Regression | 67.8 | 84.0 |
-| Decision Tree | 66.0 | 83.9 |
-| XGBoost | 73.1 | 91.8 |
+| Model               |  Outcome 1: 60 Days (AUC) | Outcome 2: 48 Hours (AUC)|
+| :---------------    | :---------------          | :---------------     |
+| Logistic Regression | 67.8                      | 84.0 |
+| Decision Tree       | 66.0                      | 83.9 |
+| XGBoost             | 73.1                      | 91.8 |
+
+Table 2: Results from training and predicting outcomes using the eICU dataset on outcome 2: ICU readmission or in-hospital death within 48 hours of ICU discharge among patients remaining in the hospital (i.e. discharged from the ICU to the floor or other stepdown unit). 
+
+| Model               |  Outcome 2: 48 Hours (AUC)|
+| :--------------     | :---------------          | 
+| Logistic Regression | 87.7 |
+| Decision Tree       | 87.2 |
+| XGBoost             | 94.4 |
+
+Table 3: Results from training using the MIMIC dataset and predicting outcomes using the eICU dataset on outcome 2: ICU readmission or in-hospital death within 48 hours of ICU discharge among patients remaining in the hospital (i.e. discharged from the ICU to the floor or other stepdown unit). 
+
+| Model               |  Outcome 2: 48 Hours (AUC)|
+| :--------------     | :---------------          | 
+| Logistic Regression | 77.6 |
+| Decision Tree       | 80.5 |
+| XGBoost             | 85.0 |
 
 ### Interpretability
 Figure 1: Coefficient weights from the logistic regression model trained on MIMIC data to predict the 48-hour outcome.
@@ -52,40 +68,30 @@ Figure 3: Summary of Shapley values for the XGBoost model trained on MIMIC data 
 ## Supporting Slides
 https://docs.google.com/presentation/d/1zNuIRwdBwT33wzVQZBsBXjrRoxMhzQjeOeQEm_L4jbY/edit
 
+## Citations
+1. Johnson, A., Bulgarelli, L., Pollard, T., Horng, S., Celi, L. A., & Mark, R. (2021). MIMIC-IV (version 1.0). PhysioNet. https://doi.org/10.13026/s6n6-xd98.
+2. Pollard, T., Johnson, A., Raffa, J., Celi, L. A., Badawi, O., & Mark, R. (2019). eICU Collaborative Research Database (version 2.0). PhysioNet. https://doi.org/10.13026/C2WM1R.
 
 ## About Us
+This website is the final deliverable for our capstone project as part of the course W210: Synthetic Capstone in the UC Berkeley Master of Information and Data Science (MIDS) program. We took the course in the spring term of 2022 with Puya Vahabi and Alberto Todeschini. More information about us is below.
+
+Dahler Battle
+![Dahler](dahler.jpeg)
+https://www.linkedin.com/in/dahlerbattle/
+https://github.com/dahlerbattle
+
+
+Mohamed Gesalla
+https://www.linkedin.com/in/mohamed-gesalla/
+https://github.com/mgesalla
+![Mohamed](mohamed.jpeg)
+
+Natasha Flowers
+https://www.linkedin.com/in/natasha-a-flowers/
+https://github.com/natasha-flowers
+![Natasha](natasha.jpeg)
 
 
 
 
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/dahlerbattle/w210_capstone/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
 
