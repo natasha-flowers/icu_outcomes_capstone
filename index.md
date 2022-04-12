@@ -63,7 +63,9 @@ Figure 3: Summary of Shapley values for the XGBoost model trained on MIMIC data 
 ## Discussion
 
 ## Supporting Slides
-https://docs.google.com/presentation/d/1zNuIRwdBwT33wzVQZBsBXjrRoxMhzQjeOeQEm_L4jbY/edit
+Note: the slide deck is only accessible to those logged in to Google with a UC Berkeley account.
+
+<https://docs.google.com/presentation/d/1zNuIRwdBwT33wzVQZBsBXjrRoxMhzQjeOeQEm_L4jbY/edit>
 
 ## Citations
 1. Johnson, A., Bulgarelli, L., Pollard, T., Horng, S., Celi, L. A., & Mark, R. (2021). MIMIC-IV (version 1.0). PhysioNet. https://doi.org/10.13026/s6n6-xd98.
@@ -73,20 +75,27 @@ https://docs.google.com/presentation/d/1zNuIRwdBwT33wzVQZBsBXjrRoxMhzQjeOeQEm_L4
 This website is the final deliverable for our capstone project as part of the course W210: Synthetic Capstone in the UC Berkeley Master of Information and Data Science (MIDS) program. We took the course in the spring term of 2022 with Puya Vahabi and Alberto Todeschini. More information about us is below.
 
 Dahler Battle
+
 ![Dahler](dahler.jpeg)
+
 <https://www.linkedin.com/in/dahlerbattle/>
 <https://github.com/dahlerbattle>
 
 
 Mohamed Gesalla
-<https://www.linkedin.com/in/mohamed-gesalla/>
-<https://github.com/mgesalla>
+
 ![Mohamed](mohamed.jpg)
 
+<https://www.linkedin.com/in/mohamed-gesalla/>
+<https://github.com/mgesalla>
+
+
 Natasha Flowers
+![Natasha](nflowers.jpg)
+
 <https://www.linkedin.com/in/natasha-a-flowers/>
 <https://github.com/natasha-flowers>
-![Natasha](nflowers.jpg)
+
 
 
 
