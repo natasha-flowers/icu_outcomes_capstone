@@ -1,6 +1,3 @@
-# Generalizable Predictions of ICU Readmissions & Deaths Using Machine Learning
-
-
 ## Overview
 
 
@@ -77,19 +74,19 @@ This website is the final deliverable for our capstone project as part of the co
 
 Dahler Battle
 ![Dahler](dahler.jpeg)
-https://www.linkedin.com/in/dahlerbattle/
-https://github.com/dahlerbattle
+<https://www.linkedin.com/in/dahlerbattle/>
+<https://github.com/dahlerbattle>
 
 
 Mohamed Gesalla
-https://www.linkedin.com/in/mohamed-gesalla/
-https://github.com/mgesalla
-![Mohamed](mohamed.jpeg)
+<https://www.linkedin.com/in/mohamed-gesalla/>
+<https://github.com/mgesalla>
+![Mohamed](mohamed.jpg)
 
 Natasha Flowers
-https://www.linkedin.com/in/natasha-a-flowers/
-https://github.com/natasha-flowers
-![Natasha](natasha.jpeg)
+<https://www.linkedin.com/in/natasha-a-flowers/>
+<https://github.com/natasha-flowers>
+![Natasha](nflowers.jpg)
 
 
 
