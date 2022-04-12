@@ -52,13 +52,13 @@ Table 3: Results from training using the MIMIC dataset and predicting outcomes u
 
 ### Interpretability
 Figure 1: Coefficient weights from the logistic regression model trained on MIMIC data to predict the 48-hour outcome.
-![Logistic Regression - MIMIC - 48-hour Outcome](logreg.png)
+![Logistic Regression - MIMIC - 48-hour Outcome](logreg.jpeg)
 
 Figure 2: Decision tree plot showing top three levels of tree trained on MIMIC data to predict the 48-hour outcome.
-![Decision Tree - MIMIC - 48-hour Outcome](dec_tree.png)
+![Decision Tree - MIMIC - 48-hour Outcome](dec_tree.jpeg)
 
 Figure 3: Summary of Shapley values for the XGBoost model trained on MIMIC data to predict the 48-hour outcome.
-![XGBoost - MIMIC - 48-hour Outcome](shap.png)
+![XGBoost - MIMIC - 48-hour Outcome](shap.jpeg)
 
 ## Discussion
 
@@ -75,22 +75,22 @@ Note: the slide deck is only accessible to those logged in to Google with a UC B
 This website is the final deliverable for our capstone project as part of the course W210: Synthetic Capstone in the UC Berkeley Master of Information and Data Science (MIDS) program. We took the course in the spring term of 2022 with Puya Vahabi and Alberto Todeschini. More information about us is below.
 
 Dahler Battle 
-[Linked-in](https://www.linkedin.com/in/dahlerbattle/)
-[Github](https://github.com/dahlerbattle)
+[[Linked-in]](https://www.linkedin.com/in/dahlerbattle/)
+[[Github]](https://github.com/dahlerbattle)
 
 ![Dahler](dahler.jpeg)
 
 
 Mohamed Gesalla 
-[Linked-in](https://www.linkedin.com/in/mohamed-gesalla/)
-[Github](https://github.com/mgesalla) 
+[[Linked-in]](https://www.linkedin.com/in/mohamed-gesalla/)
+[[Github]](https://github.com/mgesalla) 
 
-![Mohamed](mohamed.jpg)
+![Mohamed](mohamed.jpeg)
 
 
 Natasha Flowers
-[Linked-in](https://www.linkedin.com/in/natasha-a-flowers/)
-[Github](https://github.com/natasha-flowers)
+[[Linked-in]](https://www.linkedin.com/in/natasha-a-flowers/)
+[[Github]](https://github.com/natasha-flowers)
 
 ![Natasha](nflowers.jpeg)
 
