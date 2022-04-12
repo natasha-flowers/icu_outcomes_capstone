@@ -1,4 +1,3 @@
----
-title: ICU Outcomes Capstone
----
 theme: jekyll-theme-slate
+title: Predicting ICU Readmissions & Deaths
+description: Creating generalizable and interpretable models for predicting ICU readmission and death from two large hospital databases, MIMIC and eICU.
