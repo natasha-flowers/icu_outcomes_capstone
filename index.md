@@ -74,27 +74,27 @@ Note: the slide deck is only accessible to those logged in to Google with a UC B
 ## About Us
 This website is the final deliverable for our capstone project as part of the course W210: Synthetic Capstone in the UC Berkeley Master of Information and Data Science (MIDS) program. We took the course in the spring term of 2022 with Puya Vahabi and Alberto Todeschini. More information about us is below.
 
-Dahler Battle
+Dahler Battle 
+[Linked-in](https://www.linkedin.com/in/dahlerbattle/)
+[Github](https://github.com/dahlerbattle)
 
 ![Dahler](dahler.jpeg)
 
-<https://www.linkedin.com/in/dahlerbattle/>
-<https://github.com/dahlerbattle>
 
-
-Mohamed Gesalla
+Mohamed Gesalla 
+[Linked-in](https://www.linkedin.com/in/mohamed-gesalla/)
+[Github](https://github.com/mgesalla) 
 
 ![Mohamed](mohamed.jpg)
 
-<https://www.linkedin.com/in/mohamed-gesalla/>
-<https://github.com/mgesalla>
-
 
 Natasha Flowers
-![Natasha](nflowers.jpg)
+[Linked-in](https://www.linkedin.com/in/natasha-a-flowers/)
+[Github](https://github.com/natasha-flowers)
 
-<https://www.linkedin.com/in/natasha-a-flowers/>
-<https://github.com/natasha-flowers>
+![Natasha](nflowers.jpeg)
+
+
 
 
 
