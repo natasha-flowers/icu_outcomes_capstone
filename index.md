@@ -67,15 +67,15 @@ Table 2: Results from training and predicting outcomes using the eICU dataset on
 | Decision Tree       | 87.2 |
 | XGBoost             | 94.4 |
 
-Lastly, we created a model using MIMIC-IV data as the test set and eICU data as the training set in order to test the generalizability of these models on other data. The feature-set was reduced to 48 in order to match the MIMIC features with similar features in the eICU dataset. The charts below depict the AUC scores from these cross datasets and their affiliated differences between each of the previous models. The cross dataset has a noticeable decline in AUC score, however it is still high. This shows that models are generally transferable between datasets. 
+Lastly, we created a model using MIMIC-IV data as the test set and eICU data as the training set in order to test the generalizability of these models on other data. The feature-set was reduced to 48 in order to match the MIMIC features with similar features in the eICU dataset. Table 3 shows the AUC scores from these cross datasets. The cross dataset approach has a noticeable decline in AUC score; however, the results for XGBoost when trained on MIMIC and tested on eICU are still quite high. This shows that there is the potential for building generalizable models that can be trained on a large dataset from one location and then deployed in other locations as an efficient way to guide clinician decision-making on a broad scale. 
 
-Table 3: Results from training using the MIMIC dataset and predicting outcomes using the eICU dataset on outcome 2: ICU readmission or in-hospital death within 48 hours of ICU discharge among patients remaining in the hospital (i.e. discharged from the ICU to the floor or other stepdown unit). 
+Table 3: Results (AUC) from cross-dataset training for outcome 2: ICU readmission or in-hospital death within 48 hours of ICU discharge among patients remaining in the hospital (i.e. discharged from the ICU to the floor or other stepdown unit). 
 
-| Model               |  Outcome 2: 48 Hours (AUC)|
-| :--------------     | :---------------          | 
-| Logistic Regression | 77.6 |
-| Decision Tree       | 80.5 |
-| XGBoost             | 85.0 |
+| Model               |  Train MIMIC, test eICU   |  Train eICU, test MIMIC |
+| :--------------     | :---------------          | :---------------        | 
+| Logistic Regression | 77.6                      | 79.1                    |
+| Decision Tree       | 80.5                      | 78.3                    |
+| XGBoost             | 85.0                      | 79.9                    |
 
 ### Interpretability
 
@@ -102,14 +102,14 @@ Based on the differences we observed in the model’s ability to predict our two
 [Google Slides - Final Presentation](https://docs.google.com/presentation/d/1zNuIRwdBwT33wzVQZBsBXjrRoxMhzQjeOeQEm_L4jbY/edit)
 
 ## Citations
-Johnson, A., Bulgarelli, L., Pollard, T., Horng, S., Celi, L. A., & Mark, R. (2021). MIMIC-IV (version 1.0). PhysioNet. https://doi.org/10.13026/s6n6-xd98.
-Pollard, T., Johnson, A., Raffa, J., Celi, L. A., Badawi, O., & Mark, R. (2019). eICU Collaborative Research Database (version 2.0). PhysioNet. https://doi.org/10.13026/C2WM1R.
-The eICU Collaborative Research Database, a freely available multi-center database for critical care research. Pollard TJ, Johnson AEW, Raffa JD, Celi LA, Mark RG and Badawi O. Scientific Data (2018). DOI: http://dx.doi.org/10.1038/sdata.2018.178.
-Goldberger, A., Amaral, L., Glass, L., Hausdorff, J., Ivanov, P. C., Mark, R., ... & Stanley, H. E. (2000). PhysioBank, PhysioToolkit, and PhysioNet: Components of a new research resource for complex physiologic signals. Circulation [Online]. 101 (23), pp. E215–e220.
-“Welcome to the Shap Documentation.” Welcome to the SHAP Documentation - SHAP Latest Documentation, 2018, https://shap.readthedocs.io/en/latest/index.html.
-“XGBoost Documentation¶.” XGBoost Documentation - Xgboost 1.5.2 Documentation, 2021, https://xgboost.readthedocs.io/en/stable/. 
-van Sluisveld, Nelleke et al. “Variation in rates of ICU readmissions and post-ICU in-hospital mortality and their association with ICU discharge practices.” BMC health services research vol. 17,1 281. 17 Apr. 2017, doi:10.1186/s12913-017-2234-z
-Overview of Clinical Conditions With Frequent and Costly Hospital Readmissions by Payer, 2018, Agency for Healthcare Research and Quality, July 2021, https://www.hcup-us.ahrq.gov/reports/statbriefs/sb278-Conditions-Frequent-Readmissions-By-Payer-2018.jsp#:~:text=In%202018%2C%20there%20were%20a,average%20readmission%20cost%20of%20%2415%2C200. 
+1. Johnson, A., Bulgarelli, L., Pollard, T., Horng, S., Celi, L. A., & Mark, R. (2021). MIMIC-IV (version 1.0). PhysioNet. https://doi.org/10.13026/s6n6-xd98.
+2. Pollard, T., Johnson, A., Raffa, J., Celi, L. A., Badawi, O., & Mark, R. (2019). eICU Collaborative Research Database (version 2.0). PhysioNet. https://doi.org/10.13026/C2WM1R.
+3. The eICU Collaborative Research Database, a freely available multi-center database for critical care research. Pollard TJ, Johnson AEW, Raffa JD, Celi LA, Mark RG and Badawi O. Scientific Data (2018). DOI: http://dx.doi.org/10.1038/sdata.2018.178.
+4. Goldberger, A., Amaral, L., Glass, L., Hausdorff, J., Ivanov, P. C., Mark, R., ... & Stanley, H. E. (2000). PhysioBank, PhysioToolkit, and PhysioNet: Components of a new research resource for complex physiologic signals. Circulation [Online]. 101 (23), pp. E215–e220.
+5. “Welcome to the Shap Documentation.” Welcome to the SHAP Documentation - SHAP Latest Documentation, 2018, https://shap.readthedocs.io/en/latest/index.html.
+6. “XGBoost Documentation¶.” XGBoost Documentation - Xgboost 1.5.2 Documentation, 2021, https://xgboost.readthedocs.io/en/stable/. 
+7. van Sluisveld, Nelleke et al. “Variation in rates of ICU readmissions and post-ICU in-hospital mortality and their association with ICU discharge practices.” BMC health services research vol. 17,1 281. 17 Apr. 2017, doi:10.1186/s12913-017-2234-z
+8. Overview of Clinical Conditions With Frequent and Costly Hospital Readmissions by Payer, 2018, Agency for Healthcare Research and Quality, July 2021, https://www.hcup-us.ahrq.gov/reports/statbriefs/sb278-Conditions-Frequent-Readmissions-By-Payer-2018.jsp#:~:text=In%202018%2C%20there%20were%20a,average%20readmission%20cost%20of%20%2415%2C200. 
 
 ## About Us
 This website is the final deliverable for our capstone project as part of the course W210: Synthetic Capstone in the UC Berkeley Master of Information and Data Science (MIDS) program. We took the course in the spring of 2022 with Puya Vahabi and Alberto Todeschini. More information about us is below.
