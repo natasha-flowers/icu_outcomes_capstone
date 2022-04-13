@@ -30,11 +30,11 @@ We also attempted modeling on a dataset that included every variable, including 
 
 ### Outcomes
 
-#### 60-Day Readmission or In-Hospital Death
+###### 60-Day Readmission or In-Hospital Death
 
 The first outcome variable we examined was 60-day readmission or in-hospital death. This was a fairly broad outcome designed to capture as many outcomes as possible  while still constraining the time period to increase the likelihood of an association between the original ICU stay and the readmission. This variable was calculated by taking relative times between different ICU stays for the same patient, which was possible in the MIMIC dataset due to their system of providing consistent timing information for one patient across multiple hospital admissions. We chose to include death as well as readmission in this outcome because death is an important negative outcome that competes with the risk of readmission; i.e. if someone dies in the hospital then they can’t be readmitted. The limited reporting of death in this dataset means we can only include in-hospital death. 
 
-#### 48-Hour Readmission or In-Hospital Death (with observability requirement)
+###### 48-Hour Readmission or In-Hospital Death (with observability requirement)
 
   We also implemented a 48-hour readmission/death outcome as a target variable for all our models and all our datasets. The eICU dataset only provided relative timing  information within single hospital admissions, meaning that the only type of readmission that could be examined was when an ICU patient was discharged to the floor of the hospital and then later readmitted to the ICU. Because most of these types of readmissions happen within a short time window, we elected to use a much shorter time window for predictions. In order to be consistent about defining readmissions, we removed any observations from patients who left the hospital within 48 hours or prior to having an outcome, because they could have been fully discharged and then readmitted to the ICU within the 48 hour time frame but we would not have been able to accurately classify the outcome due to the limitations on timing data reporting in eICU. We implemented an analogous restriction in the MIMIC dataset in order to be consistent across models, allowing for comparison and our later cross-training step.
 
@@ -102,8 +102,14 @@ Based on the differences we observed in the model’s ability to predict our two
 [Google Slides - Final Presentation](https://docs.google.com/presentation/d/1zNuIRwdBwT33wzVQZBsBXjrRoxMhzQjeOeQEm_L4jbY/edit)
 
 ## Citations
-1. Johnson, A., Bulgarelli, L., Pollard, T., Horng, S., Celi, L. A., & Mark, R. (2021). MIMIC-IV (version 1.0). PhysioNet. <https://doi.org/10.13026/s6n6-xd98>.
-2. Pollard, T., Johnson, A., Raffa, J., Celi, L. A., Badawi, O., & Mark, R. (2019). eICU Collaborative Research Database (version 2.0). PhysioNet. <https://doi.org/10.13026/C2WM1R>.
+Johnson, A., Bulgarelli, L., Pollard, T., Horng, S., Celi, L. A., & Mark, R. (2021). MIMIC-IV (version 1.0). PhysioNet. https://doi.org/10.13026/s6n6-xd98.
+Pollard, T., Johnson, A., Raffa, J., Celi, L. A., Badawi, O., & Mark, R. (2019). eICU Collaborative Research Database (version 2.0). PhysioNet. https://doi.org/10.13026/C2WM1R.
+The eICU Collaborative Research Database, a freely available multi-center database for critical care research. Pollard TJ, Johnson AEW, Raffa JD, Celi LA, Mark RG and Badawi O. Scientific Data (2018). DOI: http://dx.doi.org/10.1038/sdata.2018.178.
+Goldberger, A., Amaral, L., Glass, L., Hausdorff, J., Ivanov, P. C., Mark, R., ... & Stanley, H. E. (2000). PhysioBank, PhysioToolkit, and PhysioNet: Components of a new research resource for complex physiologic signals. Circulation [Online]. 101 (23), pp. E215–e220.
+“Welcome to the Shap Documentation.” Welcome to the SHAP Documentation - SHAP Latest Documentation, 2018, https://shap.readthedocs.io/en/latest/index.html.
+“XGBoost Documentation¶.” XGBoost Documentation - Xgboost 1.5.2 Documentation, 2021, https://xgboost.readthedocs.io/en/stable/. 
+van Sluisveld, Nelleke et al. “Variation in rates of ICU readmissions and post-ICU in-hospital mortality and their association with ICU discharge practices.” BMC health services research vol. 17,1 281. 17 Apr. 2017, doi:10.1186/s12913-017-2234-z
+Overview of Clinical Conditions With Frequent and Costly Hospital Readmissions by Payer, 2018, Agency for Healthcare Research and Quality, July 2021, https://www.hcup-us.ahrq.gov/reports/statbriefs/sb278-Conditions-Frequent-Readmissions-By-Payer-2018.jsp#:~:text=In%202018%2C%20there%20were%20a,average%20readmission%20cost%20of%20%2415%2C200. 
 
 ## About Us
 This website is the final deliverable for our capstone project as part of the course W210: Synthetic Capstone in the UC Berkeley Master of Information and Data Science (MIDS) program. We took the course in the spring of 2022 with Puya Vahabi and Alberto Todeschini. More information about us is below.
