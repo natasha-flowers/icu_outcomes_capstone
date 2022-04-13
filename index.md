@@ -22,21 +22,19 @@ Both the eICU dataset and the MIMIC-IV dataset contain a huge wealth of informat
 
 We considered multiple approaches to selecting variables for inclusion in our models. In one approach, we relied on literature review and previous work that consulted creditable clinician to determine features that were likely to be recorded for most patients and useful for predicting health outcomes. The variables used in these models include the following:
 
-*Demographics: age, gender, ethnicity, marital status, insurance type
-
-*Stay characteristics: length of stay, has prior stay, care unit
-
-*Clinical measurements: Last value: heart rate, respiratory rate, O2 saturation, GCS (eye, motor verbal), temperature, sodium, potassium, creatinine, hematocrit, glucose, hemoglobin, platelet count, admission weight
+-  Demographics: age, gender, ethnicity, marital status, insurance type
+-  Stay characteristics: length of stay, has prior stay, care unit
+-  Clinical measurements: Last value: heart rate, respiratory rate, O2 saturation, GCS (eye, motor verbal), temperature, sodium, potassium, creatinine, hematocrit, glucose, hemoglobin, platelet count, admission weight
 
 We also attempted modeling on a dataset that included every variable, including both the last value and rate of stay for each lab and chart value. This created a dataframe of 1,433 features. While the team was able to have a broader understanding of feature importance from these all-inclusive models, model AUC performance suffered due to general overfitting and noise. We also wanted to maintain explainability in our model and therefore avoided dimensionality reduction techniques such as PCA and CA in future models. 
 
 ### Outcomes
 
 1. 60-Day Readmission or In-Hospital Death
-The first outcome variable we examined was 60-day readmission or in-hospital death. This was a fairly broad outcome designed to capture as many outcomes as possible while still constraining the time period to increase the likelihood of an association between the original ICU stay and the readmission. This variable was calculated by taking relative times between different ICU stays for the same patient, which was possible in the MIMIC dataset due to their system of providing consistent timing information for one patient across multiple hospital admissions. We chose to include death as well as readmission in this outcome because death is an important negative outcome that competes with the risk of readmission; i.e. if someone dies in the hospital then they can’t be readmitted. The limited reporting of death in this dataset means we can only include in-hospital death. 
+  The first outcome variable we examined was 60-day readmission or in-hospital death. This was a fairly broad outcome designed to capture as many outcomes as possible while still constraining the time period to increase the likelihood of an association between the original ICU stay and the readmission. This variable was calculated by taking relative times between different ICU stays for the same patient, which was possible in the MIMIC dataset due to their system of providing consistent timing information for one patient across multiple hospital admissions. We chose to include death as well as readmission in this outcome because death is an important negative outcome that competes with the risk of readmission; i.e. if someone dies in the hospital then they can’t be readmitted. The limited reporting of death in this dataset means we can only include in-hospital death. 
 
 2. 48-Hour Readmission or In-Hospital Death (with observability requirement)
-We also implemented a 48-hour readmission/death outcome as a target variable for all our models and all our datasets. The eICU dataset only provided relative timing information within single hospital admissions, meaning that the only type of readmission that could be examined was when an ICU patient was discharged to the floor of the hospital and then later readmitted to the ICU. Because most of these types of readmissions happen within a short time window, we elected to use a much shorter time window for predictions. In order to be consistent about defining readmissions, we removed any observations from patients who left the hospital within 48 hours or prior to having an outcome, because they could have been fully discharged and then readmitted to the ICU within the 48 hour time frame but we would not have been able to accurately classify the outcome due to the limitations on timing data reporting in eICU. We implemented an analogous restriction in the MIMIC dataset in order to be consistent across models, allowing for comparison and our later cross-training step.
+  We also implemented a 48-hour readmission/death outcome as a target variable for all our models and all our datasets. The eICU dataset only provided relative timing  information within single hospital admissions, meaning that the only type of readmission that could be examined was when an ICU patient was discharged to the floor of the hospital and then later readmitted to the ICU. Because most of these types of readmissions happen within a short time window, we elected to use a much shorter time window for predictions. In order to be consistent about defining readmissions, we removed any observations from patients who left the hospital within 48 hours or prior to having an outcome, because they could have been fully discharged and then readmitted to the ICU within the 48 hour time frame but we would not have been able to accurately classify the outcome due to the limitations on timing data reporting in eICU. We implemented an analogous restriction in the MIMIC dataset in order to be consistent across models, allowing for comparison and our later cross-training step.
 
 ## Modeling
 Once we had identified the variables of interest, we prepared the data for our machine learning models by filling in missing values in categorical variables with ‘unknown’ and using simple imputation with the median to fill in missing values of numeric variables, utilizing the SKLearn package for Python.
@@ -96,12 +94,9 @@ Figure 3: Summary of Shapley values for the XGBoost model trained on MIMIC data 
 
 ## Discussion
 
-It is important to note that features identified as useful for predicting the outcome in our machine learning models are not necessarily causally related to the outcome. It is outside the scope of this type of work to make clinical recommendations for treatment of patients; rather, we are simply identifying indicators of potential high-risk patients with the goal of helping healthcare professionals prioritize care in an effective manner. 
-
+Based on the differences we observed in the model’s ability to predict our two outcomes, future work may benefit from focusing on relatively short time spans for predicting readmission or death, and also should take into account variations in observability between patients. Also, we were able to identify some key predictors that were consistently impacting predictions across our models, which is informative for feature selection as well as providing guidance to clinicians on prioritizing ICU patients. We do want to note that just because these factors are strong predictors does not mean they are causally related to the outcome and should therefore be treated directly; treatment decisions should be made based on clinical expertise. In addition, our models generalized reasonably well between datasets drawn from different locations, meaning that there is the potential for future work to focus on building a single model or small number of models that can be deployed in multiple locations. 
 
 ## Supporting Slides
-Note: the slide deck is only accessible to those logged in to Google with a UC Berkeley account.
-
 [Google Slides - Final Presentation](https://docs.google.com/presentation/d/1zNuIRwdBwT33wzVQZBsBXjrRoxMhzQjeOeQEm_L4jbY/edit)
 
 ## Citations
