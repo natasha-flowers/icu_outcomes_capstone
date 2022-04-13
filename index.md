@@ -67,7 +67,7 @@ Table 2: Results from training and predicting outcomes using the eICU dataset on
 | Decision Tree       | 87.2 |
 | XGBoost             | 94.4 |
 
-Lastly, we created a model using MIMIC-IV data as the test set and eICU data as the training set in order to test the generalizability of these models on other data. The feature-set was reduced to 48 in order to match the MIMIC features with similar features in the eICU dataset. Table 3 shows the AUC scores from these cross datasets. The cross dataset approach has a noticeable decline in AUC score; however, the results for XGBoost when trained on MIMIC and tested on eICU are still quite high. This shows that there is the potential for building generalizable models that can be trained on a large dataset from one location and then deployed in other locations as an efficient way to guide clinician decision-making on a broad scale. 
+Lastly, we created models where we trained one one dataset and test on the other dataset in order to examine the generalizability of these models. The feature set was reduced to variables that were common between the two datasets. Table 3 shows the AUC scores from these models for both directions of train/test dataset choice. The cross-dataset approach has a noticeable decline in AUC score; however, the results for XGBoost when trained on MIMIC and tested on eICU are still quite high. This shows that there is the potential for building generalizable models that can be trained on a large dataset from one location and then deployed in other locations as an efficient way to guide clinician decision-making on a broad scale. 
 
 Table 3: Results (AUC) from cross-dataset training for outcome 2: ICU readmission or in-hospital death within 48 hours of ICU discharge among patients remaining in the hospital (i.e. discharged from the ICU to the floor or other stepdown unit). 
 
@@ -133,11 +133,3 @@ Natasha Flowers
 [[Github]](https://github.com/natasha-flowers)
 
 ![Natasha](nflowers.jpeg)
-
-
-
-
-
-
-
-
