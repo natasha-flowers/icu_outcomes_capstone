@@ -1,8 +1,8 @@
 ## Overview
 
-Intensive Care Unit (ICU) readmissions cause serious problems for hospitals, patients, and insurers. For patients, readmissions not only lead to longer hospital stays, but also a clinically studied increase in mortality. For insurers and hospitals, readmissions lead to higher healthcare costs and significant reimbursement penalties. While recent research has outlined novel AI/ML recommendation systems, many avenues remain unexplored as the availability of big data in the healthcare field continues to expand. Our capstone group seeks to use various machine learning techniques to create a model that can accurately predict which ICU patients are at risk of having negative outcomes (including readmission and death). This model seeks to differentiate from existing research in the field by:
+Intensive Care Unit (ICU) readmissions cause serious problems for hospitals, patients, and insurers. For patients, readmissions not only lead to longer hospital stays, but also a clinically-studied increase in mortality. For insurers and hospitals, readmissions lead to higher healthcare costs and significant reimbursement penalties. While recent research has outlined novel AI/ML recommendation systems, many avenues remain unexplored as the availability of big data in the healthcare field continues to expand. Our capstone group seeks to use various machine learning techniques to create a model that can accurately predict which ICU patients are at risk of having negative outcomes (including readmission and death). This model seeks to differentiate from existing research in the field by:
 
-a)  Focusing on building more interpretable models in order to help providers understand why a patient was flagged for risk of readmission or death
+a)  Emphasizing model interpretation in order to help providers understand why a patient was flagged for risk of readmission or death
 
 b)  Seeking to understand the transferability of different approaches using cross validation from two of the most prominent datasets available today
 
@@ -15,41 +15,33 @@ Most healthcare providers today rely upon clinician intuition, a variety of hosp
 
 
 ## Datasets
-Our approach uses two datasets, the first is the MIMIC-IV dataset taken from a range of critical care units at Beth Israel Deaconess Hospital in Boston from 2008 - 2019. This dataset contains approximately 380,000 patients and 520,000 stays and includes information such as demographics, lab measurements, medications and vital signs. 
-
-The second dataset is the eICU dataset from the eICU Collaborative Research Database. This dataset provides data from critical care units at over 200 hospitals across the continental U.S from 2014-2015 for approximately 140,000 patients and 200,000 stays and likewise includes information such as demographics, lab measurements, medications and vital signs. 
+We are using two distinct datasets, MIMIC-IV and eiCU. MIMIC-IV contains data from the critical care unit at Beth Israel Deaconess Hospital in Boston from 2008-2019 with approximately 380,000 patients and 520,000 stays overall. It includes information such as demographics, lab measurements, medications and vital signs. The second dataset is the eICU dataset, which provides data from critical care units at 200 hospitals around the continental U.S from 2014-2015 for approximately 140,000 patients and 200,000 stays. It includes the same kind of information such as demographics, lab measurements, medications and vital signs. 
 
 ### Features
-Both the eICU dataset and the MIMIC-IV dataset contained 48 and 75 features respectively. As such, the team needed to determine how to first augment but also eventually limit feature selection in order to provide the most calibrated, yet interpretable model for future production. 
+Both the eICU dataset and the MIMIC-IV dataset contain a huge wealth of information about patients and the care they receive at the hospitals, including thousands of different potential lab value measurements during ICU stays. We focused on a combination of basic demographic data and lab values from the patient charts during the ICU stay itself. Many patients have repeated measurements of a given lab during their stay; in order to aggregate across these measurements without losing too much information, we included both the last measurement taken before the end of the ICU stay as well as the rate of change in the value (calculated as the delta in the value itself divided by the time between first and last measurements while in the ICU).
 
-Lab or chart related data, the team provided two measurements for the machine learning models. First the team used the last taken value of the lab or chart. It then used affiliated length of stay and timestamp related data to calculate the rate of change for that feature throughout the patient stay. This essentially doubled the number of lab and chart features in the dataset. 
+We considered multiple approaches to selecting variables for inclusion in our models. In one approach, we relied on literature review and previous work that consulted creditable clinician to determine features that were likely to be recorded for most patients and useful for predicting health outcomes. The variables used in these models include the following:
 
-Literature review and previous work that consulted creditable clinician was helpful in determining what features to select for our models. Both of our datasets included many variables/features. Those features were a mix of demographics, stay characteristics, and lab measurements data. Below exhibits some of the features used: 
-Demographics: age, gender, ethnicity, marital status, insurance type
-Stay characteristics: length of stay, has prior stay, care unit
-Clinical measurements: Last value: heart rate, respiratory rate, O2 saturation, GCS (eye, motor verbal), temperature, sodium, potassium, creatinine, hematocrit, glucose, hemoglobin, platelet count, admission weight
+*Demographics: age, gender, ethnicity, marital status, insurance type
+
+*Stay characteristics: length of stay, has prior stay, care unit
+
+*Clinical measurements: Last value: heart rate, respiratory rate, O2 saturation, GCS (eye, motor verbal), temperature, sodium, potassium, creatinine, hematocrit, glucose, hemoglobin, platelet count, admission weight
 
 We also attempted modeling on a dataset that included every variable, including both the last value and rate of stay for each lab and chart value. This created a dataframe of 1,433 features. While the team was able to have a broader understanding of feature importance from these all-inclusive models, model AUC performance suffered due to general overfitting and noise. We also wanted to maintain explainability in our model and therefore avoided dimensionality reduction techniques such as PCA and CA in future models. 
 
-
 ### Outcomes
-1) 60-Day Readmission or In-Hospital Death
-The first outcome variable considered during data prep was 60-day readmission or in-hospital death. The 60-day readmission or death outcome determined for the MIMIC dataset was reasonable after consulting with ICU care teams. This variable was calculated by taking relative times between different ICU stays for the same patient. Below are some of the considerations when creating this outcome variable:
-Death is a negative outcome that competes with the risk of readmission; i.e. if someone dies in the hospital then they can’t be readmitted
-Limited observability of death means we can only include in-hospital death. As such, a recorded death was included in our target variable.
-Timing of readmission is defined from the end of the prior ICU stay to the beginning of the next ICU stay.
 
-2) 48-Hour Readmission or In-Hospital Death (with observability requirement)
-Due to the limitations with the eICU dataset, a 48-hour readmission/death outcome was also used as a target variable for all our models and all our datasets. The eICU dataset only tracked single admission stays and does not allow for tracking patients longer than 48 hours.  Using the 48-hour death/readmission outcome allowed for restricting the MIMIC data to match the eICU data design, design our model to predict the same target variable and allow us to produce comparable results. Below are consideration when creating this outcome variable:
-Aligns with what is possible using eICU data
-Only includes observations from patients who remained in the same hospital after discharge from the ICU (or who were dead on discharge from ICU) 
+1. 60-Day Readmission or In-Hospital Death
+The first outcome variable we examined was 60-day readmission or in-hospital death. This was a fairly broad outcome designed to capture as many outcomes as possible while still constraining the time period to increase the likelihood of an association between the original ICU stay and the readmission. This variable was calculated by taking relative times between different ICU stays for the same patient, which was possible in the MIMIC dataset due to their system of providing consistent timing information for one patient across multiple hospital admissions. We chose to include death as well as readmission in this outcome because death is an important negative outcome that competes with the risk of readmission; i.e. if someone dies in the hospital then they can’t be readmitted. The limited reporting of death in this dataset means we can only include in-hospital death. 
 
+2. 48-Hour Readmission or In-Hospital Death (with observability requirement)
+We also implemented a 48-hour readmission/death outcome as a target variable for all our models and all our datasets. The eICU dataset only provided relative timing information within single hospital admissions, meaning that the only type of readmission that could be examined was when an ICU patient was discharged to the floor of the hospital and then later readmitted to the ICU. Because most of these types of readmissions happen within a short time window, we elected to use a much shorter time window for predictions. In order to be consistent about defining readmissions, we removed any observations from patients who left the hospital within 48 hours or prior to having an outcome, because they could have been fully discharged and then readmitted to the ICU within the 48 hour time frame but we would not have been able to accurately classify the outcome due to the limitations on timing data reporting in eICU. We implemented an analogous restriction in the MIMIC dataset in order to be consistent across models, allowing for comparison and our later cross-training step.
 
 ## Modeling
 Once we had identified the variables of interest, we prepared the data for our machine learning models by filling in missing values in categorical variables with ‘unknown’ and using simple imputation with the median to fill in missing values of numeric variables, utilizing the SKLearn package for Python.
 
 We experimented with a variety of different machine learning algorithms, including logistic regression, decision trees, random forests, gradient boost, XGBoost, CatBoost, and TabNet. After hyperparameter tuning, we selected XGBoost as our consistently highest-performing model. 
-
 
 ## Results
 
@@ -64,6 +56,8 @@ Table 1: Results from training and predicting outcomes using the MIMIC-IV datase
 | Logistic Regression | 67.8                      | 84.0 |
 | Decision Tree       | 66.0                      | 83.9 |
 | XGBoost             | 73.1                      | 91.8 |
+
+We ran the same model types on the eICU dataset, but with a modified list of input variables since not all the variables used in MIMIC were available in eICU. The results for the 48 hour outcome were consistently higher than those in the MIMIC dataset. 
 
 Table 2: Results from training and predicting outcomes using the eICU dataset on outcome 2: ICU readmission or in-hospital death within 48 hours of ICU discharge among patients remaining in the hospital (i.e. discharged from the ICU to the floor or other stepdown unit). 
 
